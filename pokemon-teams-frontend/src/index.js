@@ -9,7 +9,7 @@ const render = () => {
   .then((r) => {
     return r.json()
   }).then((trainers) => {
-    console.log(trainers);
+    // console.log(trainers);
 
     mainElement.innerHTML = ''
 
@@ -55,20 +55,24 @@ const render = () => {
 
       addPokemonButton.addEventListener('click', (e)=>{
         e.preventDefault()
-        fetch(POKEMONS_URL, {
-          method: 'POST',
-          headers: {
-            'content-type': 'application/json'
-          },
-          body: JSON.stringify({
-            trainer_id: trainers[a].id
+        if (trainers[a].pokemons.length >= 6) {
+          alert('Too many Pokemans!')
+        } else {
+          fetch(POKEMONS_URL, {
+            method: 'POST',
+            headers: {
+              'content-type': 'application/json'
+            },
+            body: JSON.stringify({
+              trainer_id: trainers[a].id
+            })
+          }).then((r)=>{
+            return r.json()
+          }).then((result)=>{
+            // console.log(result);
+            render()
           })
-        }).then((r)=>{
-          return r.json()
-        }).then((result)=>{
-          // console.log(result);
-          render()
-        })
+        }
       })
 
       trainerCard.appendChild(trainerName)
