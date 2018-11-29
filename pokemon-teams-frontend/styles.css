@@ -25,7 +25,7 @@ main {
 
 div.card {
   background-color: #eeeeee;
-  height: 250px;
+  height: 530px;
   width: 300px;
   box-shadow: 10px 10px grey;
   padding: 10px;
@@ -35,7 +35,6 @@ div.card {
 p {
   font-size: 1.5em;
   color: black;
-  font-family: Helvetica;
 }
 
 li {
